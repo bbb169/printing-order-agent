@@ -1,0 +1,214 @@
+[
+  {
+    "id": "D1",
+    "input": "帮我打一份合同，一共 10 页，装订成 1 本。",
+    "clarification": null,
+    "order": {
+      "sections": [
+        {
+          "source": "合同",
+          "pages": 10,
+          "copies": 1,
+          "layoutPages": null
+        }
+      ],
+      "books": 1,
+      "questions": []
+    },
+    "expectedQuote": {
+      "currency": "CNY",
+      "priceVersion": "demo-v1",
+      "effectiveAt": "2026-10-31T00:00:00+08:00",
+      "lines": {
+        "layout": {
+          "quantity": 10,
+          "unitPriceFen": 300,
+          "subtotalFen": 3000
+        },
+        "print": {
+          "quantity": 10,
+          "unitPriceFen": 50,
+          "subtotalFen": 500
+        },
+        "binding": {
+          "quantity": 1,
+          "unitPriceFen": 2000,
+          "subtotalFen": 2000
+        }
+      },
+      "totalFen": 5500
+    }
+  },
+  {
+    "id": "D2",
+    "input": "PPT 共 20 页，每页打 3 份，装成 2 册。",
+    "clarification": null,
+    "order": {
+      "sections": [
+        {
+          "source": "PPT",
+          "pages": 20,
+          "copies": 3,
+          "layoutPages": null
+        }
+      ],
+      "books": 2,
+      "questions": []
+    },
+    "expectedQuote": {
+      "currency": "CNY",
+      "priceVersion": "demo-v1",
+      "effectiveAt": "2026-10-31T00:00:00+08:00",
+      "lines": {
+        "layout": {
+          "quantity": 20,
+          "unitPriceFen": 300,
+          "subtotalFen": 6000
+        },
+        "print": {
+          "quantity": 60,
+          "unitPriceFen": 50,
+          "subtotalFen": 3000
+        },
+        "binding": {
+          "quantity": 2,
+          "unitPriceFen": 2000,
+          "subtotalFen": 4000
+        }
+      },
+      "totalFen": 13000
+    }
+  },
+  {
+    "id": "D3",
+    "input": "论文 80 页打印份，装订一本。",
+    "clarification": "确认：论文共80个源页，每页打印1份，全部需要排版，装订1本。",
+    "order": {
+      "sections": [
+        {
+          "source": "论文",
+          "pages": 80,
+          "copies": null,
+          "layoutPages": null
+        }
+      ],
+      "books": 1,
+      "questions": []
+    },
+    "expectedQuote": {
+      "currency": "CNY",
+      "priceVersion": "demo-v1",
+      "effectiveAt": "2026-10-31T00:00:00+08:00",
+      "lines": {
+        "layout": {
+          "quantity": 80,
+          "unitPriceFen": 300,
+          "subtotalFen": 24000
+        },
+        "print": {
+          "quantity": 80,
+          "unitPriceFen": 50,
+          "subtotalFen": 4000
+        },
+        "binding": {
+          "quantity": 1,
+          "unitPriceFen": 2000,
+          "subtotalFen": 2000
+        }
+      },
+      "totalFen": 30000
+    }
+  },
+  {
+    "id": "D4",
+    "input": "只要打印，不要装订：手册 15 页，印 1 份。",
+    "clarification": null,
+    "order": {
+      "sections": [
+        {
+          "source": "手册",
+          "pages": 15,
+          "copies": 1,
+          "layoutPages": 0
+        }
+      ],
+      "books": 0,
+      "questions": []
+    },
+    "expectedQuote": {
+      "currency": "CNY",
+      "priceVersion": "demo-v1",
+      "effectiveAt": "2026-10-31T00:00:00+08:00",
+      "lines": {
+        "layout": {
+          "quantity": 0,
+          "unitPriceFen": 300,
+          "subtotalFen": 0
+        },
+        "print": {
+          "quantity": 15,
+          "unitPriceFen": 50,
+          "subtotalFen": 750
+        },
+        "binding": {
+          "quantity": 0,
+          "unitPriceFen": 2000,
+          "subtotalFen": 0
+        }
+      },
+      "totalFen": 750
+    }
+  },
+  {
+    "id": "D5",
+    "input": "封面和目录各 1 页、正文 30 页，正文打 2 份，封面目录各打 1 份，装 1 本，封面目录也需要排版。",
+    "clarification": null,
+    "order": {
+      "sections": [
+        {
+          "source": "封面",
+          "pages": 1,
+          "copies": 1,
+          "layoutPages": 1
+        },
+        {
+          "source": "目录",
+          "pages": 1,
+          "copies": 1,
+          "layoutPages": 1
+        },
+        {
+          "source": "正文",
+          "pages": 30,
+          "copies": 2,
+          "layoutPages": null
+        }
+      ],
+      "books": 1,
+      "questions": []
+    },
+    "expectedQuote": {
+      "currency": "CNY",
+      "priceVersion": "demo-v1",
+      "effectiveAt": "2026-10-31T00:00:00+08:00",
+      "lines": {
+        "layout": {
+          "quantity": 32,
+          "unitPriceFen": 300,
+          "subtotalFen": 9600
+        },
+        "print": {
+          "quantity": 62,
+          "unitPriceFen": 50,
+          "subtotalFen": 3100
+        },
+        "binding": {
+          "quantity": 1,
+          "unitPriceFen": 2000,
+          "subtotalFen": 2000
+        }
+      },
+      "totalFen": 14700
+    }
+  }
+]

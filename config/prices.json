@@ -1,0 +1,8 @@
+{
+  "version": "demo-v1",
+  "effective_at": "2026-10-31T00:00:00+08:00",
+  "currency": "CNY",
+  "layout_per_source_page_fen": 300,
+  "print_per_page_fen": 50,
+  "binding_per_book_fen": 2000
+}
