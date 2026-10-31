@@ -83,13 +83,13 @@ This table is the single specification for the five fixtures. Amounts are expect
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | D1 | 帮我打一份合同，一共 10 页，装订成 1 本。 | 10 | 10 | 1 | 30.00 | 5.00 | 20.00 | **55.00** |
 | D2 | PPT 共 20 页，每页打 3 份，装成 2 册。 | 20 | 60 | 2 | 60.00 | 30.00 | 40.00 | **130.00** |
-| D3 | 论文 80 页打印份，装订一本。 | 80 | 80 | 1 | 240.00 | 40.00 | 20.00 | **300.00** |
+| D3 | 论文80 页打两份，各装订一本。 | 80 | 160 | 2 | 240.00 | 80.00 | 40.00 | **360.00** |
 | D4 | 只要打印，不要装订：手册 15 页，印 1 份。 | 0 | 15 | 0 | 0.00 | 7.50 | 0.00 | **7.50** |
 | D5 | 封面和目录各 1 页、正文 30 页，正文打 2 份，封面目录各打 1 份，装 1 本，封面目录也需要排版。 | 32 | 62 | 1 | 96.00 | 31.00 | 20.00 | **147.00** |
 
 Case interpretations:
 
-- **D3:** The picture's wording is ambiguous. The expected quote assumes 80 source pages, one copy each, and layout. Record confirmation of this interpretation in the fixture.
+- **D3:** The user confirmed the original wording: 80 source pages, two copies, each bound as one book (two books total). No clarification is needed. Layout follows the all-source-pages default and is charged once, not once per copy.
 - **D5:** Cover and contents are distinct one-page sources, each printed once; body layout follows the default. Bind one book without changing the requested print quantities. Page allocation within that book is a production detail to clarify if needed.
 
 Use one Vitest suite and one shared fixture set for D1–D5. Each fixture contains the input, normalized order, any clarification, and expected quote fields from the table. A shared assertion checks all quantities, unit prices, subtotals, total, and pricing metadata.

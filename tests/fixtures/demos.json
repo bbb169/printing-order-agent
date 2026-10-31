@@ -81,18 +81,18 @@
   },
   {
     "id": "D3",
-    "input": "论文 80 页打印份，装订一本。",
-    "clarification": "确认：论文共80个源页，每页打印1份，全部需要排版，装订1本。",
+    "input": "论文80 页打两份，各装订一本。",
+    "clarification": null,
     "order": {
       "sections": [
         {
           "source": "论文",
           "pages": 80,
-          "copies": 1,
-          "layoutPages": 80
+          "copies": 2,
+          "layoutPages": null
         }
       ],
-      "books": 1,
+      "books": 2,
       "questions": []
     },
     "expectedQuote": {
@@ -106,17 +106,17 @@
           "subtotalFen": 24000
         },
         "print": {
-          "quantity": 80,
+          "quantity": 160,
           "unitPriceFen": 50,
-          "subtotalFen": 4000
+          "subtotalFen": 8000
         },
         "binding": {
-          "quantity": 1,
+          "quantity": 2,
           "unitPriceFen": 2000,
-          "subtotalFen": 2000
+          "subtotalFen": 4000
         }
       },
-      "totalFen": 30000
+      "totalFen": 36000
     }
   },
   {

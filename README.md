@@ -18,7 +18,7 @@ Set `API_KEY` and `MODEL` in the ignored `.env`. `MODEL=deepseek-chat` was verif
 npm run dev -- "帮我打一份合同，一共 10 页，装订成 1 本。"
 npm run build
 npm start -- "只要打印，不要装订：手册 15 页，印 1 份。"
-npm start -- "论文 80 页打印份，装订一本。" --clarification "确认80个源页，每页1份，全部排版，装订1本" --json
+npm start -- "论文80 页打两份，各装订一本。" --json
 ```
 
 Example output:
@@ -38,7 +38,7 @@ Use `--prices path/to/prices.json` for a different price file. `--json` includes
 - Layout is charged once per unique source page, independent of copies. Each source appears in one section; repeated copies belong in its `copies` field.
 - Printing is source pages × copies, summed across sections. Binding is the explicitly requested number of books.
 - Omitted copies default to one; omitted layout scope defaults to all source pages. Applied defaults appear in output. “只要打印” disables layout; “不要装订” sets books to zero.
-- Missing page counts, unknown binding requirements, conflicting instructions, or incomplete wording require clarification. D3's malformed wording is explicitly confirmed in its fixture.
+- Missing page counts, unknown binding requirements, conflicting instructions, or incomplete wording require clarification. D3 explicitly requests two copies, each bound as one book, so it needs no clarification: 80 layout pages, 160 printed pages, and two books.
 - Cover, contents, and body are separate sources. D5 binds one book while preserving requested section quantities; production page allocation does not change its bill.
 
 Prices are replaceable JSON with a version, ISO effective time, CNY currency, and nonnegative integer-fen rates. Each quote reads one snapshot; metadata describes that snapshot rather than selecting a historical price automatically.
@@ -56,8 +56,8 @@ npm test -- --reporter=verbose
 Remove-Item Env:RUN_LIVE_TESTS
 ```
 
-`tests/fixtures/demos.json` is the shared D1–D5 fixture set, including original text, normalized extraction, D3 confirmation, and every expected quote line. Offline mode injects normalized extraction and exercises the quotation flow without credentials or API calls. Live mode invokes DeepSeek with original text and confirmation, then applies the same assertions. Only `RUN_LIVE_TESTS=true` in the process environment enables live mode; `.env` cannot opt in. Test configuration preserves the API `BASE_URL` because Vite otherwise assigns that name its own asset URL.
+`tests/fixtures/demos.json` is the shared D1–D5 fixture set, including original text, normalized extraction, optional clarification, and every expected quote line. None of these five examples requires added clarification. Offline mode injects normalized extraction and exercises the quotation flow without credentials or API calls. Live mode invokes DeepSeek with original text, then applies the same assertions, including section quantities and default disclosures. Only `RUN_LIVE_TESTS=true` in the process environment enables live mode; `.env` cannot opt in. Test configuration preserves the API `BASE_URL` because Vite otherwise assigns that name its own asset URL.
 
-Verified in both modes: D1 ¥55.00, D2 ¥130.00, D3 ¥300.00, D4 ¥7.50, D5 ¥147.00. Additional tests check unresolved details, duplicate sources, invalid quantities/rates, missing configuration, and arithmetic overflow. Model extraction is probabilistic; passing fixtures is a regression check, not a guarantee for arbitrary wording.
+Verified in both modes: D1 ¥55.00, D2 ¥130.00, D3 ¥360.00, D4 ¥7.50, D5 ¥147.00. Additional tests check unresolved details, duplicate sources, invalid quantities/rates, missing configuration, and arithmetic overflow. Model extraction is probabilistic; passing fixtures is a regression check, not a guarantee for arbitrary wording.
 
 Implementation references: [LangChain ChatDeepSeek](https://docs.langchain.com/oss/javascript/integrations/chat/deepseek), [DeepSeek JSON output](https://api-docs.deepseek.com/guides/json_mode/), and [Node.js support schedule](https://github.com/nodejs/Release).
