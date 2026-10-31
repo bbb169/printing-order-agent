@@ -23,10 +23,14 @@ test.each(demos)(`${live ? "live" : "offline"} $id`, async demo => {
   });
   expect(quote).toMatchObject(demo.expectedQuote);
   expect(quote.lines).toEqual(demo.expectedQuote.lines);
-  if (!live) {
-    const expectedDefaults = OrderSchema.parse(demo.order).sections.reduce((n, s) => n + Number(s.copies === null) + Number(s.layoutPages === null), 0);
-    expect(quote.defaults).toHaveLength(expectedDefaults);
-  }
+  const expectedOrder = OrderSchema.parse(demo.order);
+  const expectedDefaults = expectedOrder.sections.reduce((n, s) => n + Number(s.copies === null) + Number(s.layoutPages === null), 0);
+  expect(quote.defaults).toHaveLength(expectedDefaults);
+  expect(quote.defaults.filter(d => d.includes("未注明份数"))).toHaveLength(expectedOrder.sections.filter(s => s.copies === null).length);
+  expect(quote.defaults.filter(d => d.includes("未注明排版范围"))).toHaveLength(expectedOrder.sections.filter(s => s.layoutPages === null).length);
+  const counts = (sections: ReturnType<typeof normalizeOrder>["sections"]) =>
+    sections.map(s => [s.pages, s.copies, s.layoutPages]).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+  expect(counts(quote.order.sections)).toEqual(counts(normalizeOrder(expectedOrder).sections));
 }, 240_000);
 
 test("missing details require clarification; invalid quantities and duplicate sources fail", () => {

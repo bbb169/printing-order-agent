@@ -88,8 +88,8 @@
         {
           "source": "论文",
           "pages": 80,
-          "copies": null,
-          "layoutPages": null
+          "copies": 1,
+          "layoutPages": 80
         }
       ],
       "books": 1,
